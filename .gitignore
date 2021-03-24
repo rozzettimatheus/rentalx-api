@@ -1,3 +1,5 @@
 node_modules/
-files/
-tmp/
+
+# temp files
+tmp/*
+!tmp
