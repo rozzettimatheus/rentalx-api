@@ -39,6 +39,8 @@ class ImportCategoryUseCase {
           categories.push({ name, description })
         })
         .on('end', () => {
+          // remove tmp file
+          fs.promises.unlink(file.path)
           resolve(categories)
         })
         .on('error', err => {
