@@ -1,11 +1,8 @@
-import { Category } from '../../model/Category'
+import { Category } from '../../models/Category'
 import {
   ICategoriesRepository,
   ICreateCategoryDTO,
 } from '../ICategoriesRepository'
-
-// erro de duas instancias diferentes
-// aplicar padrão SIngleton
 
 class CategoriesRepository implements ICategoriesRepository {
   private categories: Category[]
