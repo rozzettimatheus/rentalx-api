@@ -1,15 +1,13 @@
 import express from 'express'
 
-// routes
-import { categoriesRoutes } from './routes/categories.routes'
+import { router } from './routes'
 
 const app = express()
 
 // enables JSON parsing
 app.use(express.json())
 
-// endpoints
-app.use('/categories', categoriesRoutes)
+app.use(router)
 
 // base_url: http://localhost:3333
 app.listen(3333)
