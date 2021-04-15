@@ -6,7 +6,8 @@
   "host": "localhost",
   "database": "rentx",
   "entities": [
-    "./src/modules/car/entities/*.ts"
+    "./src/modules/car/entities/*.ts",
+    "./src/modules/accounts/entities/*.ts"
  ],
   "migrations": ["./src/database/migrations/*.ts"],
   "cli": {
