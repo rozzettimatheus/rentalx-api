@@ -5,62 +5,62 @@ module.exports = {
     jest: true,
   },
   extends: [
-    "standard",
-    "plugin:@typescript-eslint/recommended",
-    "prettier",
-    "plugin:prettier/recommended",
+    'standard',
+    'plugin:@typescript-eslint/recommended',
+    'prettier',
+    'plugin:prettier/recommended',
   ],
-  parser: "@typescript-eslint/parser",
+  parser: '@typescript-eslint/parser',
   parserOptions: {
     ecmaVersion: 12,
-    sourceType: "module",
+    sourceType: 'module',
   },
-  plugins: ["@typescript-eslint", "eslint-plugin-import-helpers", "prettier"],
+  plugins: ['@typescript-eslint', 'eslint-plugin-import-helpers', 'prettier'],
   rules: {
-    camelcase: "off",
-    "import/no-unresolved": "error",
-    "prettier/prettier": "error",
-    "@typescript-eslint/naming-convention": [
-      "error",
+    camelcase: 'off',
+    'import/no-unresolved': 'error',
+    'prettier/prettier': 'error',
+    '@typescript-eslint/naming-convention': [
+      'error',
       {
-        selector: "interface",
-        format: ["PascalCase"],
+        selector: 'interface',
+        format: ['PascalCase'],
         custom: {
-          regex: "^I[A-Z]",
+          regex: '^I[A-Z]',
           match: true,
         },
       },
     ],
-    "class-methods-use-this": "off",
-    "import/prefer-default-export": "off",
-    "no-shadow": "off",
-    "no-console": "off",
-    "no-useless-constructor": "off",
-    "no-empty-function": "off",
-    "lines-between-class-members": "off",
-    "import/extensions": [
-      "error",
-      "ignorePackages",
+    'class-methods-use-this': 'off',
+    'import/prefer-default-export': 'off',
+    'no-shadow': 'off',
+    'no-console': 'off',
+    'no-useless-constructor': 'off',
+    'no-empty-function': 'off',
+    'lines-between-class-members': 'off',
+    'import/extensions': [
+      'error',
+      'ignorePackages',
       {
-        ts: "never",
+        ts: 'never',
       },
     ],
-    "import-helpers/order-imports": [
-      "warn",
+    'import-helpers/order-imports': [
+      'warn',
       {
-        newlinesBetween: "always",
-        groups: ["module", "/^@shared/", ["parent", "sibling", "index"]],
-        alphabetize: { order: "asc", ignoreCase: true },
+        newlinesBetween: 'always',
+        groups: ['module', '/^@/', ['parent', 'sibling', 'index']],
+        alphabetize: { order: 'asc', ignoreCase: true },
       },
     ],
-    "import/no-extraneous-dependencies": [
-      "error",
-      { devDependencies: ["**/*.spec.js"] },
+    'import/no-extraneous-dependencies': [
+      'error',
+      { devDependencies: ['**/*.spec.js'] },
     ],
   },
   settings: {
-    "import/resolver": {
+    'import/resolver': {
       typescript: {},
     },
   },
-};
+}

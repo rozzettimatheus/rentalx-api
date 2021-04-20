@@ -9,7 +9,7 @@ export class AuthenticateUserController {
 
     const authenticateUserUseCase = container.resolve(AuthenticateUserUseCase)
 
-    const token = await authenticateUserUseCase.execute({
+    const token = await authenticateUserUseCase.run({
       email,
       password,
     })

@@ -2,8 +2,9 @@ import { compare } from 'bcrypt'
 import { sign } from 'jsonwebtoken'
 import { injectable, inject } from 'tsyringe'
 
-import { AppError } from '../../../../errors/AppError'
-import { IUsersRepository } from '../../repositories/IUsersRepository'
+import jwtConfig from '@config/jwt'
+import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository'
+import { AppError } from '@shared/errors/AppError'
 
 interface IRequest {
   email: string
@@ -24,7 +25,7 @@ export class AuthenticateUserUseCase {
     private repository: IUsersRepository
   ) {}
 
-  async execute({ email, password }: IRequest): Promise<IResponse> {
+  async run({ email, password }: IRequest): Promise<IResponse> {
     const user = await this.repository.findByEmail(email)
 
     if (!user) throw new AppError('Email or password incorrect', 401)
@@ -33,10 +34,9 @@ export class AuthenticateUserUseCase {
 
     if (!passwordMatch) throw new AppError('Email or password incorrect', 401)
 
-    // rentx_api for md5 hash
-    const token = sign({}, '616d927315f7ed85c389cc35392c073f', {
+    const token = sign({}, jwtConfig.secret_key, {
       subject: user.id,
-      expiresIn: '1d',
+      expiresIn: jwtConfig.expiration,
     })
 
     return {

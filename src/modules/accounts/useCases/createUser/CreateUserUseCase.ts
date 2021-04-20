@@ -1,8 +1,8 @@
 import { hash } from 'bcrypt'
 import { inject, injectable } from 'tsyringe'
 
-import { AppError } from '../../../../errors/AppError'
-import { IUsersRepository } from '../../repositories/IUsersRepository'
+import { IUsersRepository } from '@modules/accounts/repositories/IUsersRepository'
+import { AppError } from '@shared/errors/AppError'
 
 interface IRequest {
   name: string
@@ -17,7 +17,7 @@ export class CreateUserUseCase {
     @inject('UsersRepository') private repository: IUsersRepository
   ) {}
 
-  async execute({
+  async run({
     driver_license,
     email,
     name,
