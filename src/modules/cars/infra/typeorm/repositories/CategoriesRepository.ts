@@ -22,18 +22,14 @@ export class CategoriesRepository implements ICategoriesRepository {
   }
 
   async list(): Promise<Category[]> {
-    const categories = await this.repository.find()
-
-    return categories
+    return this.repository.find()
   }
 
   async findByName(name: string): Promise<Category> {
-    const category = this.repository.findOne({
+    return this.repository.findOne({
       where: {
         name,
       },
     })
-
-    return category
   }
 }

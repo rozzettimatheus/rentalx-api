@@ -4,14 +4,16 @@ import 'express-async-errors'
 import swaggerUi from 'swagger-ui-express'
 
 import '@shared/container'
-import '@shared/infra/database/typeorm'
 import swaggerConfig from '@modules/../swagger.json'
 import { AppError } from '@shared/errors/AppError'
+import createConnection from '@shared/infra/database/typeorm'
 import { router } from '@shared/infra/http/express/routes'
+
+createConnection()
 
 const app = express()
 
-// enables JSON parsing
+// enable JSON parsing
 app.use(express.json())
 
 // swagger docs endpoint
@@ -25,13 +27,17 @@ app.use(
   (err: Error, _request: Request, response: Response, _next: NextFunction) => {
     if (err instanceof AppError) {
       return response.status(err.statusCode).json({
-        message: err.message,
+        error: {
+          message: err.message,
+        },
       })
     }
 
     return response.status(500).json({
-      status: 'error',
-      message: `Internal server error - ${err.message}`,
+      error: {
+        status: 'error',
+        message: `Internal server error - ${err.message}`,
+      },
     })
   }
 )

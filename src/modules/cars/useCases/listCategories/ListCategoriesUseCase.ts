@@ -10,8 +10,6 @@ export class ListCategoriesUseCase {
   ) {}
 
   async run(): Promise<Category[]> {
-    const categories = await this.repository.list()
-
-    return categories
+    return this.repository.list()
   }
 }

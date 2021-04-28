@@ -34,9 +34,8 @@ describe('Create a category', () => {
         description: generate(),
       }
 
-      await createCategoryUseCase.run(category)
-
       // expects error - duplicated category
+      await createCategoryUseCase.run(category)
       await createCategoryUseCase.run(category)
     }).rejects.toBeInstanceOf(AppError)
   })
